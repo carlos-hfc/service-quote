@@ -17,4 +17,5 @@ export const COLORS = {
   "info-light": "#ceefff",
   "info-base": "#2aa1d9",
   "info-dark": "#1d7096",
+  white: "#ffffff",
 }
