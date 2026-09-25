@@ -1,10 +1,10 @@
-import { Text, View } from "react-native"
+import { Text, View, ViewProps } from "react-native"
 
 import { styles } from "./styles"
 
 export type StatusType = "sent" | "draft" | "approved" | "declined"
 
-interface StatusProps {
+interface StatusProps extends ViewProps {
   status: StatusType
 }
 
@@ -15,9 +15,12 @@ const statusMap: Record<StatusType, string> = {
   sent: "Enviado",
 }
 
-export function Status({ status }: StatusProps) {
+export function Status({ status, style, ...props }: StatusProps) {
   return (
-    <View style={[styles.container, styles[status]]}>
+    <View
+      style={[styles.container, styles[status], style]}
+      {...props}
+    >
       <View style={[styles.dot, styles[`${status}-dot`]]} />
       <Text style={[styles.text, styles[`${status}-text`]]}>
         {statusMap[status]}

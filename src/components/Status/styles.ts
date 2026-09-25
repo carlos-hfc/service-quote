@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     gap: 6,
     height: 24,
     alignItems: "center",
+    alignSelf: "flex-start",
     paddingHorizontal: 8,
     paddingVertical: 4,
     backgroundColor: COLORS["info-light"],
