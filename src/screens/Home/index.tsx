@@ -1,3 +1,4 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import {
   CheckIcon,
   PlusIcon,
@@ -7,6 +8,7 @@ import {
 import { useState } from "react"
 import { FlatList, Text, View } from "react-native"
 
+import { RouteList } from "@/@types/navigation"
 import {
   BottomModal,
   BottomModalContent,
@@ -53,7 +55,7 @@ const data = [
   },
 ]
 
-export function Home() {
+export function Home({ navigation }: NativeStackScreenProps<RouteList>) {
   const [isOpenFilterModal, setIsOpenFilterModal] = useState(false)
 
   return (
@@ -67,12 +69,13 @@ export function Home() {
         <Button
           icon={PlusIcon}
           text="Novo"
+          onPress={() => navigation.push("quote")}
         />
       </View>
 
       <View style={styles.content}>
         <View style={styles.form}>
-          <InputRoot>
+          <InputRoot style={styles.formInput}>
             <InputIcon icon={SearchIcon} />
             <InputField placeholder="Título ou cliente" />
           </InputRoot>

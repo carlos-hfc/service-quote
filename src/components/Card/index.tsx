@@ -1,4 +1,5 @@
-import { Text, View } from "react-native"
+import { useNavigation } from "@react-navigation/native"
+import { Text, TouchableOpacity, View } from "react-native"
 
 import { formatCurrencyNumber } from "@/utils/format-number"
 
@@ -15,8 +16,14 @@ interface CardProps {
 }
 
 export function Card({ data }: CardProps) {
+  const navigation = useNavigation()
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      activeOpacity={1}
+      onPress={() => navigation.navigate("quote")}
+      style={styles.container}
+    >
       <Status
         status={data.status}
         style={styles.status}
@@ -38,6 +45,6 @@ export function Card({ data }: CardProps) {
         <Text style={styles.currency}>R$</Text>
         <Text style={styles.value}>{formatCurrencyNumber(data.price)}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }

@@ -33,6 +33,9 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 8,
   },
+  formInput: {
+    flex: 1,
+  },
   list: {
     width: "100%",
     gap: 8,

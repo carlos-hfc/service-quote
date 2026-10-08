@@ -1,5 +1,6 @@
 export type RouteList = {
   home: undefined
+  quote: undefined
 }
 
 declare global {

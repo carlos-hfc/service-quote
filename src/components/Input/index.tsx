@@ -70,7 +70,7 @@ export function InputField({
   }
 
   function handleBlur(event: BlurEvent) {
-    setIsFocused(true)
+    setIsFocused(false)
     if (onBlur) onBlur(event)
   }
 
