@@ -1,5 +1,5 @@
 import { LucideIcon } from "lucide-react-native"
-import { createContext, useContext, useState } from "react"
+import { createContext, forwardRef, useContext, useState } from "react"
 import {
   BlurEvent,
   FocusEvent,
@@ -56,35 +56,33 @@ export function InputRoot({
   )
 }
 
-export function InputField({
-  style,
-  onFocus,
-  onBlur,
-  ...props
-}: InputFieldProps) {
-  const { setIsFocused } = useContext(InputContext)
+export const InputField = forwardRef<TextInput, InputFieldProps>(
+  ({ style, onFocus, onBlur, ...props }, ref) => {
+    const { setIsFocused } = useContext(InputContext)
 
-  function handleFocus(event: FocusEvent) {
-    setIsFocused(true)
-    if (onFocus) onFocus(event)
-  }
+    function handleFocus(event: FocusEvent) {
+      setIsFocused(true)
+      if (onFocus) onFocus(event)
+    }
 
-  function handleBlur(event: BlurEvent) {
-    setIsFocused(false)
-    if (onBlur) onBlur(event)
-  }
+    function handleBlur(event: BlurEvent) {
+      setIsFocused(false)
+      if (onBlur) onBlur(event)
+    }
 
-  return (
-    <TextInput
-      style={[styles.field, style]}
-      placeholderTextColor={COLORS["gray-500"]}
-      selectionColor={COLORS["purple-base"]}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      {...props}
-    />
-  )
-}
+    return (
+      <TextInput
+        ref={ref}
+        style={[styles.field, style]}
+        placeholderTextColor={COLORS["gray-500"]}
+        selectionColor={COLORS["purple-base"]}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        {...props}
+      />
+    )
+  },
+)
 
 export function InputIcon({ icon: IconComponent, size = 20 }: InputIconProps) {
   const { isFocused, hasError } = useContext(InputContext)
