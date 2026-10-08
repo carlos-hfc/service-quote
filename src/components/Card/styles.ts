@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     backgroundColor: COLORS["gray-100"],
     borderWidth: 1,
     borderColor: COLORS["gray-200"],
-    width: 350,
+    width: "100%",
     position: "relative",
     borderRadius: 10,
     padding: 16,
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
   },
   info: {
     gap: 8,
-    flexShrink: 1,
+    flex: 1,
   },
   infoTitle: {
     color: COLORS["gray-700"],
